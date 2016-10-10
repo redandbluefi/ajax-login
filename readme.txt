@@ -21,6 +21,7 @@ Code sample (ES6, production usage requires you to use a Webpack or Rollup and B
   <input type="text" name="log">
   <input type="password" name="pwd">
   <input type="checkbox" name="rememberme" value="forever">
+  <input type="hidden" name="RESPONSE_TYPE" value="json"> <!-- If you'd rather do it with an input. I'd recommend using the headers. -->
   <input type="submit">
 </form>
 ```

@@ -9,7 +9,6 @@
  *
  */
 
-
 function rnb_ajax_login() {
   $response = array();
 

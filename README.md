@@ -1,6 +1,6 @@
 The plugin basically hooks up to 'login_init', and listens to requests which have a Response-Type header set to 'json'. It also checks for `$_REQUEST['RESPONSE_TYPE']`, if for some reason you can't set the request headers.
 
-Code sample (ES6, production usage requires you to use a Webpack or Rollup and Babel or Bublé): 
+Code sample (ES6+, production usage requires you to use a Webpack or Rollup and Babel or Bublé):
 
 ```html
 <form action="/wp-login.php">
@@ -8,6 +8,7 @@ Code sample (ES6, production usage requires you to use a Webpack or Rollup and B
   <input type="text" name="log">
   <input type="password" name="pwd">
   <input type="checkbox" name="rememberme" value="forever">
+  <input type="hidden" name="RESPONSE_TYPE" value="json"> <!-- If you'd rather do it with an input. I'd recommend using the headers. -->
   <input type="submit">
 </form>
 ```
