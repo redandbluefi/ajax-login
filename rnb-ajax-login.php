@@ -5,7 +5,7 @@
  * Author:          Christian Nikkanen / redandblue
  * Author URI:      http://redandblue.fi
  * Text Domain:     rnb-ajax-login
- * Version:         1.0.1
+ * Version:         1.0.2
  *
  */
 
