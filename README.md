@@ -1,5 +1,14 @@
 The plugin basically hooks up to 'login_init', and listens to requests which have a Response-Type header set to 'json'. It also checks for `$_REQUEST['RESPONSE_TYPE']`, if for some reason you can't set the request headers.
 
+# Installing
+The best way to install is using Composer.
+
+`composer require redandblue/rnb-ajax-login`
+
+Traditional methods work too.
+
+# Example
+
 Code sample (ES6+, production usage requires you to use a Webpack or Rollup and Babel or Bublé):
 
 ```html
