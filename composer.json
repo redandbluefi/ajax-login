@@ -1,0 +1,13 @@
+{
+    "name": "redandblue/rnb-ajax-login",
+    "description": "Plugin makes /wp-login.php AJAX accessible.",
+    "type": "wordpress-plugin",
+    "license": "gpl-2.0",
+    "authors": [
+        {
+            "name": "Christian Nikkanen",
+            "email": "christian.nikkanen@gmail.com"
+        }
+    ],
+    "require": {}
+}
