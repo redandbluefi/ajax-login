@@ -57,8 +57,8 @@ export default function(){
     e.preventDefault();
   };
 
-  [...document.querySelectorAll('[action="/wp-login.php"]')].forEach(form => {
-    form[0].addEventListener('submit', ajaxLogin);
+  Array.from(document.querySelectorAll('[action="/wp-login.php"]')).forEach(form => {
+    form.addEventListener('submit', ajaxLogin);
   });
 }
 
