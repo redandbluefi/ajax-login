@@ -51,13 +51,8 @@ function rnb_ajax_logout() {
     $response['message'] = 'not logged in, unable to log out';
   } else {
     wp_logout();
-    if (!is_user_logged_in()) {
-      $response['type'] = 'success';
-      $response['message'] = 'logged out';
-    } else {
-      $response['type'] = 'error';
-      $response['message'] = 'unable to log out';
-    }
+    $response['type'] = 'success';
+    $response['message'] = 'logged out';
   }
   
   wp_send_json($response);
