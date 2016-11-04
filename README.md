@@ -46,7 +46,7 @@ export default function(){
       credentials: 'include'
     })
     .then(response => response.json())
-    .then(response => {
+    .then(response => { 
       if(response.type === 'success'){
         console.log(response.message);
       } else {
@@ -71,3 +71,9 @@ ajaxLogin();
 ```
 
 This allows you to AJAXify any standard WP login form. If the user has JavaScript disabled, it will gracefully fallback to the vanilla WordPress way.
+
+# Logout
+
+You can also log the current user out by sending a request to admin_ajax.php?action=wp_ajax_logout.
+
+The response will be similar, with either success or error in the response.type. 
