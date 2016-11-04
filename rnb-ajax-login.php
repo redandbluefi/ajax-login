@@ -5,14 +5,14 @@
  * Author:          Christian Nikkanen / redandblue
  * Author URI:      http://redandblue.fi
  * Text Domain:     rnb-ajax-login
- * Version:         1.0.2
+ * Version:         1.1.0
  *
  */
 
 function rnb_ajax_login() {
   $response = array();
 
-  if(is_user_logged_in()){
+  if (is_user_logged_in()) {
     $user = wp_get_current_user();
     $response['type'] = 'error';
     $response['message'] = 'already logged in as ' . $user->user_email;
@@ -25,7 +25,7 @@ function rnb_ajax_login() {
 
     $login = wp_signon($credentials, apply_filters('rnb_ajax_login_securecookie', true));
 
-    if(!is_wp_error($login)){
+    if (!is_wp_error($login)) {
       $response['type'] = 'success';
       $response['message'] = 'logged in as ' . $login->user_email;
     } else {
@@ -43,10 +43,30 @@ function rnb_ajax_login() {
   wp_send_json($response);
 }
 
+function rnb_ajax_logout() {
+  $response = array();
+  
+  if (!is_user_logged_in()) {
+    $response['type'] = 'error';
+    $response['message'] = 'not logged in, unable to log out';
+  } else {
+    wp_logout();
+    if (!is_user_logged_in()) {
+      $response['type'] = 'success';
+      $response['message'] = 'logged out';
+    } else {
+      $response['type'] = 'error';
+      $response['message'] = 'unable to log out';
+    }
+  }
+  
+  wp_send_json($response);
+}
+
 function rnb_ajax_login_action(){
   if (!empty($_SERVER['HTTP_RESPONSE_TYPE']) && strtolower($_SERVER['HTTP_RESPONSE_TYPE']) === "json") {
     rnb_ajax_login();
-  } elseif (!empty($_REQUEST['RESPONSE_TYPE']) && strtolower($_REQUEST['RESPONSE_TYPE'])) {
+  } elseif (!empty($_REQUEST['RESPONSE_TYPE']) && strtolower($_REQUEST['RESPONSE_TYPE']) === "json") {
     rnb_ajax_login();
   } else {
     return;
@@ -54,3 +74,5 @@ function rnb_ajax_login_action(){
 }
 
 add_action('login_init', 'rnb_ajax_login_action');
+add_action('wp_ajax_wp_ajax_logout', 'rnb_ajax_logout');
+add_action('wp_ajax_nopriv_wp_ajax_logout', 'rnb_ajax_logout');
